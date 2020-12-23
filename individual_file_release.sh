@@ -9,7 +9,7 @@ set -eux
 # line access to your webspace.
 
 # Variables - recommended setup - may be updated to your needs before running the script
-installdirectory=/opt
+installdirectory=/scratch
 softwaredirectory=mediawiki
 mediawiki=REL1_31
 semanticmediawiki=^3.2
@@ -25,7 +25,7 @@ echo "Cloning and checking out ${mediawiki} MediaWiki:"
 echo
 cd ${installdirectory}
 #git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git ${softwaredirectory} --branch ${mediawiki} --depth 20
-mkdir ${softwaredirectory}
+mkdir -p ${softwaredirectory}
 cd ${softwaredirectory}
 #git checkout origin/${mediawiki}
 echo "Done."

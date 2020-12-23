@@ -1,0 +1,101 @@
++ composer update --no-dev --prefer-source
+Class ComposerHookHandler is not autoloadable, can not call pre-update-cmd script
+Loading composer repositories with package information
+Updating dependencies
+Package operations: 49 installs, 0 updates, 0 removals
+  - Installing wikimedia/composer-merge-plugin (v1.4.1): Cloning 81c6ac72a2 from cache
+  - Installing cssjanus/cssjanus (v1.3.0): Cloning 93db9fb39c from cache
+  - Installing ralouphie/getallheaders (3.0.3): Cloning 120b605dfe from cache
+  - Installing psr/http-message (1.0.1): Cloning f6561bf28d from cache
+  - Installing guzzlehttp/psr7 (1.7.0): Cloning 53330f4752 from cache
+  - Installing guzzlehttp/promises (1.4.0): Cloning 60d379c243 from cache
+  - Installing symfony/polyfill-php72 (v1.20.0): Cloning cede45fcdf from cache
+  - Installing symfony/polyfill-intl-idn (v1.17.0): Cloning 3bff59ea70 from cache
+  - Installing guzzlehttp/guzzle (6.5.4): Cloning a4a1b69305 from cache
+  - Installing oojs/oojs-ui (v0.39.3): Cloning 517e59fe02 from cache
+  - Installing pear/pear_exception (v1.0.1): Cloning dbb42a5a0e from cache
+  - Installing pear/console_getopt (v1.4.3): Cloning a41f8d3e66 from cache
+  - Installing pear/pear-core-minimal (v1.10.10): Cloning 625a3c429d from cache
+  - Installing pear/mail (v1.4.1): Cloning 9609ed5e42 from cache
+  - Installing pear/mail_mime (1.10.8): Cloning 094b39784a from cache
+  - Installing pear/net_socket (v1.2.2): Cloning bbe6a12bb4 from cache
+  - Installing pear/net_smtp (1.9.1): Cloning ee0e156ab9 from cache
+  - Installing wikimedia/base-convert (v2.0.1): Cloning 449f0d0237 from cache
+  - Installing wikimedia/cdb (1.4.1): Cloning d49d96232f from cache
+  - Installing wikimedia/cldr-plural-rule-parser (v1.0.0): Cloning 2b623a411b from cache
+  - Installing pleonasm/bloom-filter (1.0.2): Cloning 4a3292c9f8 from cache
+  - Installing wikimedia/common-passwords (0.2.0): Cloning b9db612730 from cache
+  - Installing wikimedia/html-formatter (1.0.2): Cloning d6241e74d8 from cache
+  - Installing wikimedia/at-ease (v2.0.0): Cloning 013ac61929 from cache
+  - Installing wikimedia/ip-set (2.1.0): Cloning f84555041a from cache
+  - Installing wikimedia/less.php (v3.0.0): Cloning 5e2a4fba93 from cache
+  - Installing wikimedia/zest-css (1.1.3): Cloning 6d7e7a879a from cache
+  - Installing wikimedia/wikipeg (2.0.5): Cloning df47c20859 from cache
+  - Installing wikimedia/scoped-callback (v3.0.0): Cloning 0a480d9a97 from cache
+  - Installing wikimedia/utfnormal (v2.0.0): Cloning ec1ec7ce9e from cache
+  - Installing wikimedia/remex-html (2.2.0): Cloning 7792461b06 from cache
+  - Installing psr/container (1.0.0): Cloning b7ce3b1764 from cache
+  - Installing wikimedia/object-factory (v2.1.0): Cloning 863aee60c8 from cache
+  - Installing wikimedia/ip-utils (1.0.0): Cloning c505b99c0d from cache
+  - Installing wikimedia/assert (v0.5.0): Cloning d8e97f15b8 from cache
+  - Installing psr/log (1.1.3): Cloning 0f73288fd1 from cache
+  - Installing liuggio/statsd-php-client (v1.0.18): Cloning c42e6d6687 from cache
+  - Installing composer/semver (1.5.1): Cloning c6bea70230 from cache
+  - Installing wikimedia/parsoid (v0.12.0): Cloning 4062d23e36 from cache
+  - Installing wikimedia/php-session-serializer (v1.0.7): Cloning 9382814e70 from cache
+  - Installing wikimedia/purtle (v1.0.7): Cloning 569064c065 from cache
+  - Installing wikimedia/relpath (2.1.1): Cloning 35e701ff16 from cache
+  - Installing wikimedia/running-stat (v1.2.1): Cloning 60eebada7c from cache
+  - Installing wikimedia/services (2.0.1): Cloning 5ef69a8a8b from cache
+  - Installing wikimedia/wait-condition-loop (v1.0.1): Cloning 0321b8ca6a from cache
+  - Installing wikimedia/wrappedstring (v3.2.0): Cloning 11b01a2286 from cache
+  - Installing wikimedia/timestamp (v3.0.0): Cloning 42ce5586d2 from cache
+  - Installing wikimedia/xmp-reader (0.7.0): Cloning 4b8ab8ea23 from cache
+  - Installing zordius/lightncandy (v1.2.5): Cloning 37aa381e0f from cache
+Writing lock file
+Generating optimized autoload files
+2 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+Class ComposerHookHandler is not autoloadable, can not call pre-update-cmd script
+Loading composer repositories with package information
+Updating dependencies
+Package operations: 30 installs, 0 updates, 0 removals
+  - Installing composer/installers (v1.9.0): Downloading (100%)         
+  - Installing justinrainbow/json-schema (5.2.10): Downloading (100%)         
+  - Installing seld/jsonlint (1.7.1): Downloading (100%)         
+  - Installing react/promise (v2.8.0): Downloading (100%)         
+  - Installing guzzlehttp/streams (3.0.0): Downloading (100%)         
+  - Installing guzzlehttp/ringphp (1.1.1): Downloading (100%)         
+  - Installing elasticsearch/elasticsearch (v6.7.2): Downloading (100%)         
+  - Installing symfony/css-selector (v3.4.47): Downloading (100%)         
+  - Installing onoi/shared-resources (0.4.3): Downloading (100%)         
+  - Installing wikimedia/textcat (1.3.0): Downloading (100%)         
+  - Installing onoi/tesa (0.1.0): Downloading (100%)         
+  - Installing onoi/callback-container (2.0.0): Downloading (100%)         
+  - Installing onoi/cache (1.2.0): Downloading (100%)         
+  - Installing onoi/http-request (1.3.1): Downloading (100%)         
+  - Installing onoi/blob-store (1.2.1): Downloading (100%)         
+  - Installing onoi/event-dispatcher (1.1.0): Downloading (100%)         
+  - Installing onoi/message-reporter (1.4.1): Downloading (100%)         
+  - Installing serialization/serialization (4.0.0): Downloading (100%)         
+  - Installing data-values/interfaces (0.2.5): Downloading (100%)         
+  - Installing data-values/data-values (2.3.0): Downloading (100%)         
+  - Installing data-values/validators (0.1.3): Downloading (100%)         
+  - Installing data-values/common (0.4.3): Downloading (100%)         
+  - Installing param-processor/param-processor (1.10.0): Downloading (100%)         
+  - Installing mediawiki/parser-hooks (1.6.1): Downloading (100%)         
+  - Installing mediawiki/semantic-media-wiki (3.2.2): Downloading (100%)         
+  - Installing mediawiki/semantic-compound-queries (2.1.0): Downloading (100%)         
+  - Installing mediawiki/semantic-extra-special-properties (2.1.0): Downloading (100%)         
+  - Installing data-values/geo (4.2.1): Downloading (100%)         
+  - Installing nicmart/tree (v0.2.7): Downloading (100%)         
+  - Installing mediawiki/semantic-result-formats (3.2.0): Downloading (100%)         
+Package guzzlehttp/streams is abandoned, you should avoid using it. No replacement was suggested.
+Package guzzlehttp/ringphp is abandoned, you should avoid using it. No replacement was suggested.
+Writing lock file
+Generating optimized autoload files
+6 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+Class ComposerVendorHtaccessCreator is not autoloadable, can not call post-update-cmd script
+Class ComposerVendorHtaccessCreator is not autoloadable, can not call post-update-cmd script
+
