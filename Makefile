@@ -17,7 +17,7 @@ build_mw:
 	docker build -t mediawiki_composer .
 
 run_mw: clean build_mw
-	mkdir mediawiki
+	mkdir -p mediawiki
 	cp composer.json mediawiki
 	docker run -it -v`pwd`:/scratch -w /scratch --rm mediawiki_composer:latest /bin/bash
 
