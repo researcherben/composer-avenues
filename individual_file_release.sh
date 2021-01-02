@@ -13,9 +13,6 @@ installdirectory=/scratch
 softwaredirectory=mediawiki
 mediawiki=REL1_31
 semanticmediawiki=^3.2
-semanticresultformats=^3.1
-semanticcompoundqueries=^2.1
-semanticextraspecialproperties=^2.0
 
 # Commands
 echo
@@ -34,10 +31,7 @@ echo "Creating 'composer.local.json' file:"
 cat <<EOF >composer.local.json
 {
 	"require": {
-		"mediawiki/semantic-compound-queries": "${semanticcompoundqueries}",
-		"mediawiki/semantic-extra-special-properties": "${semanticextraspecialproperties}",
-		"mediawiki/semantic-media-wiki": "${semanticmediawiki}",
-		"mediawiki/semantic-result-formats": "${semanticresultformats}"
+		"mediawiki/semantic-media-wiki": "${semanticmediawiki}"
 	},
 	"config": {
 		"preferred-install": "source",
@@ -53,23 +47,14 @@ echo
 composer update --no-dev --prefer-source
 echo "Done."
 echo
-#echo "Cloning and checking out Vector skin:"
-#cd skins
-#git clone https://gerrit.wikimedia.org/r/p/mediawiki/skins/Vector.git
-#cd Vector
-#git checkout origin/${mediawiki}
-#echo "Done."
-#echo
-#echo "Removing '.git' directories of MediaWiki and Vector:"
-#rm -r -f .git/
-#cd ../..
-#rm -r -f .git/
-#echo "Done."
-#echo
+
+cd ${installdirectory}
+
 
 # https://stackoverflow.com/a/13032768/1164295
-find . -type d -name ".git" -exec rm -rf {} \;
+find ${softwaredirectory} -type d -name ".git" -exec rm -rf {} \;
+find ${softwaredirectory} -type d -name ".github" -exec rm -rf {} \;
 
-find . -type f -name .git* -exec rm -rf {} \;
+find ${softwaredirectory} -type f -name .git* -exec rm -rf {} \;
 
 echo "The file release may now be moved to your webspace."
