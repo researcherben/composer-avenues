@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# inspired by 
+# inspired by
 # https://github.com/SemanticMediaWiki/IndividualFileRelease
 
 set -eux
@@ -10,25 +10,21 @@ set -eux
 
 # Variables - recommended setup - may be updated to your needs before running the script
 installdirectory=/scratch
-softwaredirectory=mediawiki
+softwaredirectory=ifr
 mediawiki=REL1_31
 semanticmediawiki=^3.2
 
 # Commands
-echo
 echo "Creating an individual file release"
-echo
-echo "Cloning and checking out ${mediawiki} MediaWiki:"
-echo
+
 cd ${installdirectory}
-#git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git ${softwaredirectory} --branch ${mediawiki} --depth 20
+rm -rf ${softwaredirectory}
 mkdir -p ${softwaredirectory}
 cd ${softwaredirectory}
-#git checkout origin/${mediawiki}
-echo "Done."
-echo
-echo "Creating 'composer.local.json' file:"
-cat <<EOF >composer.local.json
+
+
+echo "Creating 'composer.json' file:"
+cat <<EOF >composer.json
 {
 	"require": {
 		"mediawiki/semantic-media-wiki": "${semanticmediawiki}"
@@ -39,22 +35,16 @@ cat <<EOF >composer.local.json
 	}
 }
 EOF
-echo "Done."
-echo
 echo "Installing MediaWiki dependencies as well as predefined"
-echo "semantic extensions including its required dependencies:"
-echo
-composer update --no-dev --prefer-source
-echo "Done."
-echo
-
-cd ${installdirectory}
-
+echo "semantic extensions including required dependencies:"
+composer update --verbose --no-dev --prefer-source
 
 # https://stackoverflow.com/a/13032768/1164295
-find ${softwaredirectory} -type d -name ".git" -exec rm -rf {} \;
-find ${softwaredirectory} -type d -name ".github" -exec rm -rf {} \;
+find . -type d -name ".git" -exec rm -rf {} \;
+find . -type d -name ".github" -exec rm -rf {} \;
+find . -type f -name .git* -exec rm -rf {} \;
 
-find ${softwaredirectory} -type f -name .git* -exec rm -rf {} \;
+cd ${installdirectory}
+tar cvf ifr.tar ifr/
 
 echo "The file release may now be moved to your webspace."

@@ -1,0 +1,13 @@
+FROM mediawiki:latest
+
+RUN apt-get update && apt-get install -y \
+    vim unzip libzip-dev
+
+RUN docker-php-ext-install zip
+
+# install PHP package manager "Compose"
+# requires v1 instead of v2 for compatibility with SMW
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.16
+#RUN mv composer.phar /usr/local/bin/composer
+
+WORKDIR /opt
