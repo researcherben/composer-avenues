@@ -8,6 +8,8 @@ https://www.semantic-mediawiki.org/wiki/Help:Installation
    * manually resolve each dependency and manually download each repo
    * use a Python recursive function to crawl the packagist API
 
+Whatever route you take to getting SMW, there's a separate [repo for SMW in MW](https://github.com/researcherben/mediawiki-in-docker)
+
 ## IFR route
 
 The normal installation process  
