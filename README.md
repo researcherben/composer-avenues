@@ -1,11 +1,16 @@
 # install Semantic MediaWiki extension to existing MediaWiki
 
-Normally the Semantic MediaWiki extension is installed using Composer, as per
+Options:
+* Normally the Semantic MediaWiki extension is installed using [Composer](https://getcomposer.org/), as per
 https://www.semantic-mediawiki.org/wiki/Help:Installation
+* If [Composer](https://getcomposer.org/download/) is not available on the MediaWiki server, Composer can be run off-line on a separate server to create an "IndividualFileRelease". Then the IFR is uploaded to the MediaWiki server
+* Build [Composer from source](https://github.com/composer/composer) on the MW server; also upload each of the dependent extensions as git repos. To get the dependent git repos,
+   * manually resolve each dependency and manually download each repo
+   * use a Python recursive function to crawl the packagist API
 
-When composer is not available, an "IndividualFileRelease" is available. 
+Whatever route you take to getting SMW, there's a separate [repo for SMW in MW](https://github.com/researcherben/mediawiki-in-docker)
 
-## context
+## IFR route
 
 The normal installation process  
 https://www.semantic-mediawiki.org/wiki/Help:Installation  
