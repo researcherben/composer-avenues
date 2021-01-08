@@ -24,7 +24,7 @@ services:
       - database
     volumes:
       - ./images:/var/www/html/images
-      - ./ifr:/ifr
+      - ./ifr.tar:/opt/ifr.tar
       # After initial setup, download LocalSettings.php to the same directory as
       # this yaml and uncomment the following line and use compose to restart
       # the mediawiki service

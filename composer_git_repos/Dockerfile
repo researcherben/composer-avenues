@@ -1,7 +1,7 @@
 FROM mediawiki:latest
 
 RUN apt-get update && apt-get install -y \
-    vim unzip libzip-dev git
+    vim unzip libzip-dev git wget
 
 #RUN docker-php-ext-install zip
 
