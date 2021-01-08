@@ -1,4 +1,5 @@
-FROM mediawiki:latest
+FROM mediawiki:1.31
+# version pinned to 1.31 to match IFR script
 
 RUN apt-get update && apt-get install -y \
     git vim unzip libzip-dev wget
