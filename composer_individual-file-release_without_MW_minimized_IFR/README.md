@@ -1,3 +1,7 @@
+https://github.com/SemanticMediaWiki/SemanticMediaWiki/releases/tag/2.5.5
+
+
+
 See also <https://www.semantic-mediawiki.org/wiki/Help:Installation/Using_Tarball_(without_shell_access)>
 
 # step 1
