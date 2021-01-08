@@ -6,3 +6,5 @@ RUN apt-get update && apt-get install -y \
 RUN docker-php-ext-install zip
 
 COPY ifr.tar /opt
+WORKDIR /opt
+RUN tar xvf ifr.tar
