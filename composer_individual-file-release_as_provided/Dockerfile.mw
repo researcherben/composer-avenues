@@ -1,0 +1,8 @@
+FROM mediawiki:latest
+
+RUN apt-get update && apt-get install -y \
+    git vim unzip libzip-dev wget
+
+RUN docker-php-ext-install zip
+
+COPY ifr.tar /opt

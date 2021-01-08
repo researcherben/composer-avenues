@@ -41,3 +41,5 @@ how to specify local paths for Composer: https://getcomposer.org/doc/05-reposito
 
 The following packages are not needed by SMW but look interesting and are stand-alone (no dependencies)
 * https://packagist.org/packages/mediawiki/mermaid
+
+See also https://github.com/ProfessionalWiki/SemanticBundle
