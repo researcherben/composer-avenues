@@ -56,7 +56,7 @@ move_folders:
 
 # now we are here: https://www.semantic-mediawiki.org/wiki/Help:Installation/Using_Tarball_(without_shell_access)#Enable_Semantic_MediaWiki
 addSemantics:
-	echo "require_once \"\$IP/extensions/SemanticMediaWiki/SemanticMediaWiki.php\";"  >> LocalSettings.php
+	echo "require_once \"/var/www/html/extensions/SemanticMediaWiki/SemanticMediaWiki.php\";"  >> LocalSettings.php
 	echo "enableSemantics('localhost');" >> LocalSettings.php
 
 #php maintenance/generateLocalAutoload.php
