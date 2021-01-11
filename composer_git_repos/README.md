@@ -8,8 +8,13 @@ cd /var/www/html/extensions
 git clone https://gerrit.wikimedia.org/r/p/mediawiki/extensions/SemanticMediaWiki.git
 
 
+https://getcomposer.org/doc/05-repositories.md#disabling-packagist-org
+
 step xx
 enableSemantics('localhost');
 
 step xx+1
 php maintenance/update.php
+
+
+When I use "artifact" and .zip files, I get the error message "version not found"

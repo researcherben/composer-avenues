@@ -5,12 +5,12 @@ help:
 	@echo "      this message"
 	@echo "==== Targets outside container ===="
 	@echo "make first_compose"
-	@echo "make after_download_of_localSettings"
+	@echo "make addSemantics"
 
 
 # for IFR
 build_mw_with_composer:
-	docker build -f Dockerfile.create_ifr -t mw_create_ifr .
+	docker build -f Dockerfile -t mw_create_ifr .
 	docker run --rm --entrypoint cat mw_create_ifr /opt/ifr_smw.tar > ifr.tar
 
 
@@ -42,6 +42,9 @@ extract_ifr_inside_mw_container: after_download_of_localSettings
 	$(eval container_id := $(shell docker ps | grep mediawiki | cut -d' ' -f1))
 	docker cp ifr.tar $(container_id):/opt/ifr.tar
 	docker exec -it $(container_id) /bin/bash -c "tar xvf /opt/ifr.tar --directory=/opt"
+
+# this is the stage where I snap-shotted the container
+# docker commit 2e16fbe1ca11 mediawiki_with_ifr_extracted
 
 #set_permissions_on_swm: 
 #	$(eval container_id := $(shell docker ps | grep mediawiki | cut -d' ' -f1))

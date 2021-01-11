@@ -18,8 +18,8 @@ semanticextraspecialproperties=^2.0
 echo
 echo "Creating an individual file release"
 echo
-echo "Cloning and checking out ${mediawiki} MediaWiki:"
-echo
+#echo "Cloning and checking out ${mediawiki} MediaWiki:"
+#echo
 #cd ${installdirectory}
 #git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git ${softwaredirectory} --branch ${mediawiki} --depth 20
 #cd ${softwaredirectory}
@@ -50,16 +50,17 @@ composer update --no-dev --prefer-source
 echo "Done."
 echo
 echo "Cloning and checking out Vector skin:"
-#cd skins
-#git clone https://gerrit.wikimedia.org/r/p/mediawiki/skins/Vector.git
-#cd Vector
-#git checkout origin/${mediawiki}
-#echo "Done."
+cd skins
+git clone https://gerrit.wikimedia.org/r/p/mediawiki/skins/Vector.git
+cd Vector
+git checkout origin/${mediawiki}
+echo "Done."
 echo
-#echo "Removing '.git' directories of MediaWiki and Vector:"
-#rm -r -f .git/
-#cd ../..
-#rm -r -f .git/
-#echo "Done."
+echo "Removing '.git' directories of MediaWiki and Vector:"
+rm -r -f .git/
+cd ../..
+rm -r -f .git/
+echo "Done."
 echo
 echo "The file release may now be moved to your webspace."
+

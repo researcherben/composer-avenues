@@ -12,7 +12,7 @@ services:
 #    user: "${MW_DOCKER_UID}:${MW_DOCKER_GID}"
     # the default "mediawiki" image works but does not include desired extentions (e.g., SMW)
 #    image: mediawiki
-    image: mediawiki_git_wget
+    image: mediawiki_with_ifr_extracted
 #    build:
 #      context: .
 #      dockerfile: Dockerfile

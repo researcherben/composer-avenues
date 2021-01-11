@@ -11,7 +11,7 @@ services:
     # the MW_DOCKER_* come from the .env file
 #    user: "${MW_DOCKER_UID}:${MW_DOCKER_GID}"
     # the default "mediawiki" image works but does not include desired extentions (e.g., SMW)
-    image: mediawiki
+    image: mediawiki:1.31
 #    build:
 #      context: .
 #      dockerfile: Dockerfile
@@ -24,7 +24,6 @@ services:
       - database
     volumes:
       - ./images:/var/www/html/images
-      - ./ifr:/ifr
       # After initial setup, download LocalSettings.php to the same directory as
       # this yaml and uncomment the following line and use compose to restart
       # the mediawiki service

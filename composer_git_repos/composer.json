@@ -1,0 +1,31 @@
+{"minimum-stability": "dev",
+  "repositories": [
+    {"packagist.org": false
+    },{"type": "path",
+        "url": "/opt/SemanticMediaWiki"
+      },{"type": "path",
+        "url": "/opt/ParserHooks"
+      },{"type": "path",
+        "url": "/opt/Validators"
+      },{"type": "path",
+        "url": "/opt/callback-container"
+      },{"type": "path",
+        "url": "/opt/elasticsearch-php"
+      },{"type": "path",
+        "url": "/opt/installers"
+      },{"type": "path",
+        "url": "/opt/json-schema"
+      },{"type": "path",
+        "url": "/opt/log"
+      },{"type": "path",
+        "url": "/opt/Common"
+      },{"type": "path",
+        "url": "/opt/DataValues"
+      },{"type": "path",
+        "url": "/opt/Interfaces"
+      }
+  ],
+  "require": {
+    "mediawiki/semantic-media-wiki": "master@dev"
+  }
+}
