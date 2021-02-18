@@ -2,7 +2,7 @@
 
 Options:
 * Normally the Semantic MediaWiki extension is installed using [Composer](https://getcomposer.org/), as per
-https://www.semantic-mediawiki.org/wiki/Help:Installation
+https://www.semantic-mediawiki.org/wiki/Help:Installation . Details on how Composer installs PHP extensions are below. 
 * If [Composer](https://getcomposer.org/download/) is not available on the MediaWiki server, Composer can be run off-line on a separate server to create an "IndividualFileRelease". Then the IFR is uploaded to the MediaWiki server
 * Build [Composer from source](https://github.com/composer/composer) on the MW server; also upload each of the dependent extensions as git repos. To get the dependent git repos,
    * manually resolve each dependency and manually download each repo
