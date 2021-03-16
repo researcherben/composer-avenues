@@ -10,15 +10,24 @@
 
 ## Process:
 
+### Step 0
+
+If MediaWiki previous was set up, remove all instances by running
+
+    rm -rf db images
+    docker-compose -f stack.yml rm
+
 ### Step 1
 
 We assume that an offline Wiki server has been set up with the necessary prerequisites for a Mediawiki server: Apache, mysql, PHP, and the mediawiki software.
 
 Set the password, then create a .yml file for docker-compose
 
+    mkdir offline_server
+    cd offline_server
     echo "MYSQL_PW=example" > .env
 
-    cat << EOF > stack.yml
+    cat << EOF > stackoffline.yml
     # MediaWiki with MariaDB
     version: '3'
     services:
@@ -54,10 +63,13 @@ Set the password, then create a .yml file for docker-compose
           - ./db:/var/lib/mysql
     EOF
 
-    docker-compose --file stack.yml  up --force-recreate
+    docker-compose --file stackoffline.yml  up --force-recreate
 
-Access via "http://localhost:8080" in a browser
+_Caveat_: wait until MariaDB has settled before attempting to set up MediaWiki
 
+Access "http://localhost:8080" in a browser
+
+Create LocalSettings.php, download, uncomment the line in stackoffline.yml, and restart
 
 ### Step 2
 
@@ -72,54 +84,80 @@ From this point, we are creating a separate server, one that has internet access
 
 Swapping to the server with web access, we download mediawiki and then we install said wiki using Composer. In this step, we set up a mediawiki similar to the one set up for the Offline wiki, with the same requisite components. We may use identical containers as the Offline wiki, but they can not be shared between the two wikis, as we are maintaining separation. The following procedure assumes a setup web server for the wiki.
 
-Setup process for Mediawiki (this can be substituted for a different setup process):
+    mkdir online_server
+    cd online_sever
+    cat << EOF > Dockerfile
+    FROM mediawiki:latest
+    RUN apt-get update && apt-get install -y \
+        vim unzip libzip-dev
+    RUN docker-php-ext-install zip
 
-    wget https://releases.wikimedia.org/mediawiki/1.35/mediawiki-1.35.1.tar.gz
-    tar xvzf mediawiki-\*.tar.gz
+    # install PHP package manager "Compose"
+    # requires v1 instead of v2 for compatibility with SMW
+    RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.16
+    #RUN mv composer.phar /usr/local/bin/composer
 
-These unzipped files are then uploaded to the server's web directory.
+    # once Compose is installed, create a file the specifies the desired packages
+    # update mediawiki extensions via composer
+    RUN echo "{\n\"require\": {\n\"mediawiki/semantic-media-wiki\": \"~3.2\"\n}\n}" > /var/www/html/composer.local.json
+    # then run Composer to get the package
+    RUN composer update --no-dev
+    EOF
 
-Afterwards, we set up a new database (assuming we are initializing a new wiki. Otherwise, skip this subsection.)
+Using that Dockerfile, create an image that includes SWM
 
-This can be done during the mediawiki installation script or manually via MySQL commands:
+    docker build -t mw_with_smw .
 
-    CREATE DATABASE wikidb;
-    CREATE USER …
-    GRANT ALL PRIVILEGES …
+and then use that image in `docker-compose`
 
-Run the installation script via web browser directed at your server's address on the hard drive, and download the LocalSettings.php file to the Online Server's MediaWiki folder. Alternatively, do this process via command line with:
+    echo "MYSQL_PW=example" > .env
 
-    php maintenance/install.php
+    cat << EOF > stackonline.yml
+    # MediaWiki with MariaDB
+    version: '3'
+    services:
+      mediawiki_with_smw:
+        image: mw_with_smw
+        depends_on:
+          - database
+        restart: unless-stopped
+        ports:
+          - 8080:80
+        links:
+          - database
+        volumes:
+          - ./images:/var/www/html/images
+          # After initial setup, download LocalSettings.php to the same directory as
+          # this yaml and uncomment the following line and use compose to restart
+          # the mediawiki service
+          #- ./LocalSettings.php:/var/www/html/LocalSettings.php
+      database:
+        image: mariadb
+        restart: unless-stopped
+        expose:
+          - "3306"
+        environment:
+          MYSQL_DATABASE: my_wiki
+          MYSQL_USER: wikiuser
+          # ${MYSQL_WD} comes from the .env file
+          MYSQL_PASSWORD: ${MYSQL_PW}
+          # You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD
+          #MYSQL_ROOT_PASSWORD: mysecret
+          MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+        volumes:
+          - ./db:/var/lib/mysql
+    EOF
 
-End setup process for Mediawiki
+    docker-compose --file stackonline.yml  up --force-recreate
 
+_Caveat_: wait until MariaDB has settled before attempting to set up MediaWiki
+
+Access "http://localhost:8080" in a browser
+
+Create LocalSettings.php, download, uncomment the line in stackoffline.yml, and restart
 
 ### Step 5
 
-We then install composer:
-
-    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-    php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-    php composer-setup.php
-    php -r "unlink('composer-setup.php');"
-
-This allows us to run composer via:
-
-    php composer.phar
-
-in the folder where the .phar file is placed.
-
-Create a composer.local.json file in the format
-
-    {
-      "require": {
-        "mediawiki/semantic-media-wiki": "~3.0"
-      }
-    }
-
-Add additional extensions in the require section as needed, with comma separation.
-
-The composer json should be in the base directory of your mediawiki online installation. This .local.json identifies the extensions that you wish to install into your wiki.
 
 Afterwards, run the update and maintenance scripts, which load the extensions into the file structure.
 
@@ -137,7 +175,7 @@ In "LocalSettings.php":
 Add:
 
     require_once "$IP/extensions/SemanticMediaWiki/SemanticMediaWiki.php";
-    enableSemantics( 'wikidomainname.address');
+    enableSemantics( 'localhost');
 
 as a call at the end of the file, replacing the domain name as needed.
 
@@ -158,12 +196,14 @@ Now having a fully updated online SMW installation, we create an individual file
 Download IndividualFileRelease.sh from https://raw.githubusercontent.com/SemanticMediaWiki/IndividualFileRelease/master/IndividualFileRelease.sh
 
 
-
-    curl -o https://raw.githubusercontent.com/SemanticMediaWiki/IndividualFileRelease/master/IndividualFileRelease.sh
+    cd /opt
+    curl https://raw.githubusercontent.com/SemanticMediaWiki/IndividualFileRelease/master/IndividualFileRelease.sh > IndividualFileRelease.sh
     chmod 700 IndividualFileRelease.sh
     ./IndividualFileRelease.sh
+    cd /var/tmp/mediawiki/
+    tar czvf mw.tar.gz *
 
-The resultant files from this are then moved to the OFFLINE server. This is not a compressed version.
+The resultant files from this (27MB tar.gz file) are then moved to the OFFLINE server.
 
 ### Step 7
 
