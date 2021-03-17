@@ -14,14 +14,14 @@
 
 If MediaWiki previous was set up, remove all instances by running
 
-    rm -rf db images
+    rm -rf db images LocalSettings.php
     docker-compose -f stack.yml rm
 
 ### Step 1
 
-We assume that an offline Wiki server has been set up with the necessary prerequisites for a Mediawiki server: Apache, mysql, PHP, and the mediawiki software.
+Set up an offline MediaWiki server
 
-Set the password, then create a .yml file for docker-compose
+First set the password, then create a .yml file for docker-compose
 
     mkdir offline_server
     cd offline_server
@@ -69,11 +69,13 @@ _Caveat_: wait until MariaDB has settled before attempting to set up MediaWiki
 
 Access "http://localhost:8080" in a browser
 
-Create LocalSettings.php, download, uncomment the line in stackoffline.yml, and restart
+Create LocalSettings.php, download, uncomment the line in stackoffline.yml
+
+Do not restart yet
 
 ### Step 2
 
-The Offline Server is running two docker containers: a PHP server and the MariaDB server.
+The Offline Server is running two docker containers: a MediaWiki PHP server and the MariaDB server.
 
 ### Step 3
 
@@ -152,14 +154,11 @@ and then use that image in `docker-compose`
 
 _Caveat_: wait until MariaDB has settled before attempting to set up MediaWiki
 
-Access "http://localhost:8080" in a browser
-
-Create LocalSettings.php, download, uncomment the line in stackoffline.yml, and restart
 
 ### Step 5
 
 
-Afterwards, run the update and maintenance scripts, which load the extensions into the file structure.
+run the update and maintenance scripts, which load the extensions into the file structure.
 
 
 
@@ -203,7 +202,7 @@ Download IndividualFileRelease.sh from https://raw.githubusercontent.com/Semanti
     cd /var/tmp/mediawiki/
     tar czvf mw.tar.gz *
 
-The resultant files from this (27MB tar.gz file) are then moved to the OFFLINE server.
+The resultant files from this (74MB tar.gz file) are then moved to the OFFLINE server.
 
 ### Step 7
 
