@@ -32,7 +32,7 @@ First set the password, then create a .yml file for docker-compose
     version: '3'
     services:
       mediawiki_no_smw:
-        image: mediawiki
+        image: mediawiki:1.31.1
         depends_on:
           - database
         restart: unless-stopped
@@ -89,7 +89,7 @@ Swapping to the server with web access, we download mediawiki and then we instal
     mkdir online_server
     cd online_sever
     cat << EOF > Dockerfile
-    FROM mediawiki:latest
+    FROM mediawiki::1.31.1
     RUN apt-get update && apt-get install -y \
         vim unzip libzip-dev
     RUN docker-php-ext-install zip
