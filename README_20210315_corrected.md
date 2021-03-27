@@ -101,6 +101,7 @@ Swapping to the server with web access, we download mediawiki and then we instal
 
     # once Compose is installed, create a file the specifies the desired packages
     # update mediawiki extensions via composer
+    # CAVEAT: This isn't necessary on the online server; it merely shows how an online server can have SMW installed
     RUN echo "{\n\"require\": {\n\"mediawiki/semantic-media-wiki\": \"~3.2\"\n}\n}" > /var/www/html/composer.local.json
     # then run Composer to get the package
     RUN composer update --no-dev
