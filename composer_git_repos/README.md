@@ -292,6 +292,41 @@ Create LocalSettings.php, download
 
 https://getcomposer.org/doc/05-repositories.md#disabling-packagist-org
 
+create a file `composer.json`
+
+    {"minimum-stability": "dev",
+      "repositories": [
+        {"packagist.org": false
+        },{"type": "path",
+            "url": "/packages/SemanticMediaWiki"
+          },{"type": "path",
+            "url": "/packages/ParserHooks"
+          },{"type": "path",
+            "url": "/packages/Validators"
+          },{"type": "path",
+            "url": "/packages/callback-container"
+          },{"type": "path",
+            "url": "/packages/elasticsearch-php"
+          },{"type": "path",
+            "url": "/packages/installers"
+          },{"type": "path",
+            "url": "/packages/json-schema"
+          },{"type": "path",
+            "url": "/packages/log"
+          },{"type": "path",
+            "url": "/packages/Common"
+          },{"type": "path",
+            "url": "/packages/DataValues"
+          },{"type": "path",
+            "url": "/packages/Interfaces"
+          }
+      ],
+      "require": {
+        "mediawiki/semantic-media-wiki": "master@dev"
+      }
+    }
+    
+
 step xx
 
     enableSemantics('localhost');
