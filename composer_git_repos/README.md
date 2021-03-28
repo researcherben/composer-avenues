@@ -343,7 +343,7 @@ On the host, create a file `packages/composer.json` that contains
           }
       ],
       "require": {
-        "mediawiki/semantic-media-wiki": "master@dev"
+        "mediawiki/semantic-media-wiki": "^3.2"
       }
     }
     
