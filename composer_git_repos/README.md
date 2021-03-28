@@ -296,37 +296,51 @@ Access "http://localhost:8080" in a browser
 
 Create LocalSettings.php, download
 
-# step 5:
+# step 6: stop containers, enable LocalSettings in YAML
 
+Stop the docker-compose, enable LocalSettings.php mapping inside stackoffline.yml
+
+# step 7: 
+
+In a separate terminal, 
+
+    docker exec -it `docker ps | grep mediawiki | cut -d' ' -f1` /bin/bash
+
+Inside that container, 
+
+    cd /opt/
+
+Based on 
 https://getcomposer.org/doc/05-repositories.md#disabling-packagist-org
+disable reference to packagist and use the locally-available /packages/ 
 
-create a file `composer.json`
+create a file `composer.json` that contains
 
     {"minimum-stability": "dev",
       "repositories": [
         {"packagist.org": false
         },{"type": "path",
-            "url": "/packages/SemanticMediaWiki"
+            "url": "/packages/SemanticMediaWiki-3.2.2"
           },{"type": "path",
-            "url": "/packages/ParserHooks"
+            "url": "/packages/ParserHooks-1.6.1"
           },{"type": "path",
-            "url": "/packages/Validators"
+            "url": "/packages/Validators-1.0.0"
           },{"type": "path",
-            "url": "/packages/callback-container"
+            "url": "/packages/callback-container-2.0.0"
           },{"type": "path",
-            "url": "/packages/elasticsearch-php"
+            "url": "/packages/elasticsearch-php-6.7.2"
           },{"type": "path",
-            "url": "/packages/installers"
+            "url": "/packages/ParamProcessor-1.11.0"
           },{"type": "path",
-            "url": "/packages/json-schema"
+            "url": "/packages/json-schema-5.2.10"
           },{"type": "path",
-            "url": "/packages/log"
+            "url": "/packages/RingPHP-1.1.1"
           },{"type": "path",
-            "url": "/packages/Common"
+            "url": "/packages/Common-1.0.0"
           },{"type": "path",
-            "url": "/packages/DataValues"
+            "url": "/packages/DataValues-3.0.0"
           },{"type": "path",
-            "url": "/packages/Interfaces"
+            "url": "/packages/Interfaces-1.0.0"
           }
       ],
       "require": {
