@@ -317,29 +317,29 @@ On the host, create a file `packages/composer.json` that contains
       "repositories": [
         {"packagist.org": false
         },{"type": "path",
-            "url": "/packages/SemanticMediaWiki-3.2.2"
+           "url": "/packages/SemanticMediaWiki-3.2.2"
           },{"type": "path",
-            "url": "/packages/installers-1.10.0"
+             "url": "/packages/installers-1.10.0"
           },{"type": "path",
-            "url": "/packages/ParserHooks-1.6.1"
+             "url": "/packages/ParserHooks-1.6.1"
           },{"type": "path",
-            "url": "/packages/Validators-1.0.0"
+             "url": "/packages/Validators-1.0.0"
           },{"type": "path",
-            "url": "/packages/callback-container-2.0.0"
+             "url": "/packages/callback-container-2.0.0"
           },{"type": "path",
-            "url": "/packages/elasticsearch-php-6.7.2"
+             "url": "/packages/elasticsearch-php-6.7.2"
           },{"type": "path",
-            "url": "/packages/ParamProcessor-1.11.0"
+             "url": "/packages/ParamProcessor-1.11.0"
           },{"type": "path",
-            "url": "/packages/json-schema-5.2.10"
+             "url": "/packages/json-schema-5.2.10"
           },{"type": "path",
-            "url": "/packages/RingPHP-1.1.1"
+             "url": "/packages/RingPHP-1.1.1"
           },{"type": "path",
-            "url": "/packages/Common-1.0.0"
+             "url": "/packages/Common-1.0.0"
           },{"type": "path",
-            "url": "/packages/DataValues-3.0.0"
+             "url": "/packages/DataValues-3.0.0"
           },{"type": "path",
-            "url": "/packages/Interfaces-1.0.0"
+             "url": "/packages/Interfaces-1.0.0"
           }
       ],
       "require": {
