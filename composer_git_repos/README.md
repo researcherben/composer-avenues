@@ -307,19 +307,11 @@ Stop the docker-compose, enable LocalSettings.php mapping inside stackoffline.ym
 
 # step 7: create composer.json that references locally-available files
 
-In a separate terminal, 
-
-    docker exec -it `docker ps | grep mediawiki | cut -d' ' -f1` /bin/bash
-
-Inside that container, 
-
-    cd /opt/
-
 Based on 
 https://getcomposer.org/doc/05-repositories.md#disabling-packagist-org
 disable reference to packagist and use the locally-available /packages/ 
 
-create a file `composer.json` that contains
+On the host, create a file `packages/composer.json` that contains
 
     {"minimum-stability": "dev",
       "repositories": [
@@ -355,9 +347,13 @@ create a file `composer.json` that contains
       }
     }
     
-# step 8:
+# step 8: use composer to install from local folders
 
-    cd /opt/
+    docker exec -it `docker ps | grep mediawiki | cut -d' ' -f1` /bin/bash
+
+Inside that container, 
+
+    cd /packages
     php /packages/composer_1.phar validate composer.json
     
     php /packages/composer_1.phar install
