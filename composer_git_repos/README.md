@@ -66,6 +66,10 @@ The list should be something like
 
     docker run -it --rm -v`pwd`:/scratch smw_dependencies /bin/bash
 
+Inside the container, 
+
+    cd /scratch
+
 In the above log output, the line
 
     Installing mediawiki/semantic-media-wiki (3.2.2)
