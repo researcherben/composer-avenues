@@ -1,3 +1,9 @@
+# step 0: if you're starting over
+
+    docker-compose -f stackoffline.yml rm
+    docker rmi smw_dependencies
+    rm -rf Dockerfile stackoffline.yml packages/ db/ images/ .env
+
 # step 1: generate list of extension dependencies
 
 set up MediaWiki with Composer inside a Docker image
