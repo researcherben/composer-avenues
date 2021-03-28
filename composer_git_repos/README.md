@@ -5,7 +5,7 @@ set up MediaWiki with Composer inside a Docker image
     cat << EOF > Dockerfile
     FROM mediawiki:1.31.1
     RUN apt-get update && apt-get install -y \
-    vim unzip libzip-dev
+        vim unzip libzip-dev wget
     RUN docker-php-ext-install zip
 
     # install PHP package manager "Composer"
@@ -63,6 +63,8 @@ The list should be something like
     Installing mediawiki/semantic-media-wiki (3.2.2)
 
 # step 3: wget the git repo for each of above
+
+    docker run -it --rm -v`pwd`:/scratch smw_dependencies /bin/bash
 
 In the above log output, the line
 
