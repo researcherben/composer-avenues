@@ -89,7 +89,7 @@ On the server with web access, we download mediawiki and then we install said wi
     mkdir online_server
     cd online_sever
     cat << EOF > Dockerfile
-    FROM mediawiki::1.31.1
+    FROM mediawiki:1.31.1
     RUN apt-get update && apt-get install -y \
         vim unzip libzip-dev
     RUN docker-php-ext-install zip
