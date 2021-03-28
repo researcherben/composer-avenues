@@ -64,6 +64,8 @@ The list should be something like
 
 # step 3: wget the git repo for each of above
 
+We'll use `wget` inside that same container. Mount `/scratch` on the host so the files we `wget` do not end up inside the container
+
     docker run -it --rm -v`pwd`:/scratch smw_dependencies /bin/bash
 
 Inside the container, 
@@ -218,6 +220,10 @@ To save you time, here's all the wget commands and their corresponding packagist
     wget https://github.com/SemanticMediaWiki/SemanticMediaWiki/archive/refs/tags/3.2.2.zip
     unzip 3.2.2.zip
     rm 3.2.2.zip
+
+Exit the container
+
+    exit
 
 # step 4: run the offline mediawiki server in Docker
 
