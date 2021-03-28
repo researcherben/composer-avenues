@@ -300,7 +300,7 @@ Create LocalSettings.php, download
 
 Stop the docker-compose, enable LocalSettings.php mapping inside stackoffline.yml
 
-# step 7: 
+# step 7: create composer.json that references locally-available files
 
 In a separate terminal, 
 
@@ -348,8 +348,12 @@ create a file `composer.json` that contains
       }
     }
     
+# step 8:
 
-step xx
+    cd /opt/
+    php /packages/composer_1.phar validate composer.json
+
+# step xx
 
     enableSemantics('localhost');
 
