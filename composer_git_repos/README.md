@@ -248,7 +248,7 @@ On the host, create a docker-compose YAML file
           - database
         volumes:
           - ./images:/var/www/html/images
-          - ./scratch:/scratch
+          - ./packages:/packages
           # After initial setup, download LocalSettings.php to the same directory as
           # this yaml and uncomment the following line and use compose to restart
           # the mediawiki service
