@@ -223,11 +223,19 @@ To save you time, here's all the wget commands and their corresponding packagist
     unzip 3.2.2.zip
     rm 3.2.2.zip
 
+# step 4: wget composer
+
+While still inside the container,
+
+    # downloaded from https://github.com/composer/composer/releases/tag/1.10.19
+    wget https://github.com/composer/composer/releases/download/1.10.19/composer.phar
+    mv composer.phar composer_1.phar
+
 Exit the container
 
     exit
 
-# step 4: run the offline mediawiki server in Docker
+# step 5: run the offline mediawiki server in Docker
 
 On the host, create a docker-compose YAML file
 
