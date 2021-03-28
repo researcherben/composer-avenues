@@ -6,7 +6,7 @@
 
 # step 1: generate list of extension dependencies
 
-set up MediaWiki with Composer inside a Docker image
+Set up MediaWiki with Composer inside a Docker image
 
     cat << EOF > Dockerfile
     FROM mediawiki:1.31.1
@@ -68,9 +68,9 @@ The list should be something like
     Installing mediawiki/parser-hooks (1.6.1)
     Installing mediawiki/semantic-media-wiki (3.2.2)
 
-# step 3: wget the git repo for each of above
+# step 3: `wget` the git repo for each of the above
 
-We'll use `wget` inside that same container. Mount `/scratch` on the host so the files we `wget` do not end up inside the container
+Use `wget` inside that same container. Mount `/scratch` on the host so the files we `wget` do not end up inside the container
 
     mkdir packages
     cd packages
