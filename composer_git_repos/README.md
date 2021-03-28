@@ -66,6 +66,8 @@ The list should be something like
 
 We'll use `wget` inside that same container. Mount `/scratch` on the host so the files we `wget` do not end up inside the container
 
+    mkdir packages
+    cd packages
     docker run -it --rm -v`pwd`:/scratch smw_dependencies /bin/bash
 
 Inside the container, 
@@ -229,8 +231,6 @@ Exit the container
 
 On the host, create a docker-compose YAML file
 
-    mkdir offline_server
-    cd offline_server
     echo "MYSQL_PW=example" > .env
     
     cat << EOF > stackoffline.yml
