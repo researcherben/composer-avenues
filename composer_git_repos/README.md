@@ -227,6 +227,8 @@ Exit the container
 
 # step 4: run the offline mediawiki server in Docker
 
+On the host, create a docker-compose YAML file
+
     mkdir offline_server
     cd offline_server
     echo "MYSQL_PW=example" > .env
