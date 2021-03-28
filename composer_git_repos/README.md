@@ -111,6 +111,11 @@ which points to the source code release https://github.com/JeroenDeDauw/ParamPro
 
 To save you time, here's all the wget commands and their corresponding packagist URL
 
+    # https://packagist.org/packages/composer/installers
+    wget https://github.com/composer/installers/archive/refs/tags/v1.10.0.zip
+    unzip v1.10.0.zip
+    rm v1.10.0.zip
+
     # https://packagist.org/packages/justinrainbow/json-schema#5.2.10
     wget https://github.com/justinrainbow/json-schema/archive/refs/tags/5.2.10.zip
     unzip 5.2.10.zip
@@ -322,6 +327,8 @@ create a file `composer.json` that contains
         },{"type": "path",
             "url": "/packages/SemanticMediaWiki-3.2.2"
           },{"type": "path",
+            "url": "/packages/installers-1.10.0"
+          },{"type": "path",
             "url": "/packages/ParserHooks-1.6.1"
           },{"type": "path",
             "url": "/packages/Validators-1.0.0"
@@ -352,6 +359,8 @@ create a file `composer.json` that contains
 
     cd /opt/
     php /packages/composer_1.phar validate composer.json
+    
+    php /packages/composer_1.phar install
 
 # step xx
 
