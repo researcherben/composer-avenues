@@ -31,6 +31,8 @@ and build the image
 
     docker build -t smw_dependencies . --no-cache --progress=plain
 
+The "progress=plain" is to show the full output data since Docker buildkit hides the data
+
 # step 2: get list of extension dependencies
 
 The list should be something like
