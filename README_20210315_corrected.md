@@ -84,7 +84,7 @@ From this point, we are creating a separate server, one that has internet access
 ### Step 4
 
 
-On the server with web access, we download mediawiki and then we install said wiki using Composer. In this step, we set up a mediawiki similar to the one set up for the Offline wiki, with the same requisite components. We may use identical containers as the Offline wiki, but they can not be shared between the two wikis, as we are maintaining separation. The following procedure assumes a setup web server for the wiki.
+On the server with web access, download mediawiki and then install the wiki using Composer. In this step we set up a mediawiki similar to the one set up for the Offline wiki, with the same requisite components. We may use identical containers as the Offline wiki, but they can not be shared between the two wikis, as we are maintaining separation. The following procedure assumes a setup web server for the wiki.
 
     mkdir online_server
     cd online_sever
