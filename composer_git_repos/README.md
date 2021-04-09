@@ -299,7 +299,17 @@ _Caveat_: wait until MariaDB has settled before attempting to set up MediaWiki
 
 Access "http://localhost:8080" in a browser
 
-Create LocalSettings.php, download
+Database host = database
+
+database username = wikiuser
+
+database password = example
+
+download LocalSettings.php
+
+Uncomment the line in stackoffline.yml
+
+    - ./LocalSettings.php:/var/www/html/LocalSettings.php
 
 # step 6: stop containers, enable LocalSettings in YAML
 
